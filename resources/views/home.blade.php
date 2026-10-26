@@ -31,7 +31,7 @@
       @if($wa)<a class="btn g" href="https://wa.me/{{ $wa }}?text={{ urlencode('Halo, saya ingin bertanya') }}" target="_blank" rel="noopener">Chat WhatsApp</a>@endif
     </div>
   </div>
-  <div class="orb" aria-hidden="true"><div>🏍️</div></div>
+  <div class="orb" aria-hidden="true"><div style="display:grid;place-items:center;width:100%;height:100%"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:75%;height:75%;object-fit:contain;border-radius:50%"></div></div>
 </div></section>
 
 <div class="wrap"><div class="flag"></div></div>

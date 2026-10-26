@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>@yield('title', 'Dashboard') – Admin</title>
+<title>@yield('title', 'Dashboard') – ONG BLASTING 86 Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Racing+Sans+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -24,7 +24,7 @@
 ])
 <div class="app">
 <aside>
-  <a class="logo disp" href="{{ route('admin.dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:36px;height:36px;object-fit:contain;border-radius:50%"> Admin</a>
+  <a class="logo disp" href="{{ route('admin.dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:36px;height:36px;object-fit:contain;border-radius:50%"> ONG BLASTING 86</a>
   @foreach($menu as [$r, $label, $ic, $pat])
     <a class="nv {{ request()->routeIs($pat) ? 'on' : '' }}" href="{{ route($r) }}">{{ $ic }} {{ $label }}</a>
   @endforeach
