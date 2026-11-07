@@ -23,17 +23,26 @@
   ['admin.setting.edit', 'Pengaturan', '⚙️', 'admin.setting.*'],
 ])
 <div class="app">
-<aside>
-  <a class="logo disp" href="{{ route('admin.dashboard') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:36px;height:36px;object-fit:contain;border-radius:50%"> ONG BLASTING 86</a>
-  @foreach($menu as [$r, $label, $ic, $pat])
-    <a class="nv {{ request()->routeIs($pat) ? 'on' : '' }}" href="{{ route($r) }}">{{ $ic }} {{ $label }}</a>
-  @endforeach
+<button class="mobile-nav-toggle" type="button" aria-controls="admin-sidebar" aria-expanded="false" data-admin-nav-toggle><span></span><span></span><span></span><span class="sr-only">Buka navigasi admin</span></button>
+<aside id="admin-sidebar">
+  <div class="rail-head">
+    <a class="logo disp" href="{{ route('admin.dashboard') }}"><img class="logo-mark" src="{{ asset('images/logo.png') }}" alt="Logo ONG BLASTING 86"> <span>ONG BLASTING 86</span></a>
+    <span class="rail-status"><i></i> SISTEM ONLINE</span>
+  </div>
+  <nav class="rail-nav" aria-label="Navigasi admin">
+    <span class="nav-label">OPERASIONAL</span>
+    @foreach($menu as [$r, $label, $ic, $pat])
+      <a class="nv {{ request()->routeIs($pat) ? 'on' : '' }}" href="{{ route($r) }}" @if(request()->routeIs($pat)) aria-current="page" @endif><span class="nav-icon" aria-hidden="true">{{ $ic }}</span> <span>{{ $label }}</span></a>
+    @endforeach
+  </nav>
   <div class="sp"></div>
-  <a class="nv" href="{{ route('home') }}" target="_blank" rel="noopener">🌐 Lihat web</a>
-  <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="nv" type="submit">🚪 Keluar</button></form>
+  <div class="rail-footnote"><span class="pulse-mark"></span><span>NODE 86.01<br><small>READY FOR SERVICE</small></span></div>
+  <a class="nv" href="{{ route('home') }}" target="_blank" rel="noopener"><span class="nav-icon" aria-hidden="true">🌐</span> <span>Lihat web</span></a>
+  <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="nv" type="submit"><span class="nav-icon" aria-hidden="true">🚪</span> <span>Keluar</span></button></form>
 </aside>
+<div class="admin-scrim" data-admin-nav-close></div>
 <main class="adm">
-  <div class="top"><h1>@yield('title', 'Dashboard')</h1><button class="round" type="button" data-theme-toggle>🌙</button><b>{{ auth()->user()->name }}</b></div>
+  <div class="top"><div class="top-title"><span class="eyebrow">CONTROL CENTER / 86</span><h1>@yield('title', 'Dashboard')</h1></div><div class="top-user"><button class="round" type="button" data-theme-toggle aria-label="Ganti tema">🌙</button><b>{{ auth()->user()->name }}</b><span class="user-dot" aria-hidden="true"></span></div></div>
   @if(session('ok'))<div class="flash" role="status">{{ session('ok') }}</div>@endif
   @if($errors->any() && !request()->isMethod('get'))<div class="flash bad">{{ $errors->first() }}</div>@endif
   @yield('content')
