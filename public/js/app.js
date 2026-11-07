@@ -1,5 +1,20 @@
 (function () {
   var r = document.documentElement;
+  function countUp() {
+    document.querySelectorAll('[data-count-up]').forEach(function (el) {
+      var target = Number(el.dataset.countUp || 0);
+      var start = performance.now();
+      var duration = 750;
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased).toLocaleString('id-ID');
+        if (progress < 1) window.requestAnimationFrame(tick);
+      }
+      window.requestAnimationFrame(tick);
+    });
+  }
+
   function icons() {
     document.querySelectorAll('[data-theme-toggle]').forEach(function (b) {
       var d = r.dataset.theme === 'dark';
@@ -35,4 +50,5 @@
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
   icons();
+  countUp();
 })();

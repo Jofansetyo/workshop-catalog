@@ -2,10 +2,10 @@
 @section('title', 'Ringkasan')
 @section('content')
 <div class="grid k">
-  <div class="card kpi"><span>Booking hari ini</span><b>{{ $today }}</b></div>
-  <div class="card kpi y"><span>Menunggu konfirmasi</span><b>{{ $pending }}</b></div>
-  <div class="card kpi"><span>Stok menipis</span><b>{{ $low }}</b></div>
-  <div class="card kpi y"><span>Booking bulan ini</span><b>{{ $month }}</b></div>
+  <div class="card kpi"><span>Booking hari ini</span><b data-count-up="{{ $today }}">0</b></div>
+  <div class="card kpi y"><span>Menunggu konfirmasi</span><b data-count-up="{{ $pending }}">0</b></div>
+  <div class="card kpi"><span>Stok menipis</span><b data-count-up="{{ $low }}">0</b></div>
+  <div class="card kpi y"><span>Booking bulan ini</span><b data-count-up="{{ $month }}">0</b></div>
 </div>
 <div class="grid two">
   <div class="card"><h2>Booking 7 Hari Terakhir</h2>
