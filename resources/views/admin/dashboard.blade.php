@@ -11,7 +11,7 @@
   <div class="card"><h2>Booking 7 Hari Terakhir</h2>
     <div class="bars">@foreach($bars as $b)<div><b>{{ $b['n'] }}</b><i style="--bar-height:{{ max(4, round($b['n'] / $max * 90)) }}%"></i>{{ $b['label'] }}</div>@endforeach</div></div>
   <div class="card y"><h2>Layanan Terlaris</h2>
-    @forelse($top as $t)<p style="display:flex;justify-content:space-between"><span>{{ $t->service }}</span><b>{{ $t->n }}</b></p>@empty<p class="small">Belum ada data.</p>@endforelse</div>
+    @forelse($top as $t)<p class="top-service"><span>{{ $t->service }}</span><b>{{ $t->n }}</b></p>@empty<p class="small">Belum ada data.</p>@endforelse</div>
 </div>
 <div class="card"><div class="bar"><h2>Booking Terbaru</h2><div class="sp"></div><a class="btn g" href="{{ route('admin.booking.index') }}">Lihat semua</a></div>
   <div class="scroll"><table><thead><tr><th>Kode</th><th>Pelanggan</th><th>Layanan</th><th>Status</th></tr></thead><tbody>

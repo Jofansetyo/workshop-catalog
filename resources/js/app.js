@@ -48,6 +48,40 @@
     }
   });
 
+  var pendingForm = null;
+  document.addEventListener('click', function (e) {
+    var confirmButton = e.target.closest('[data-confirm]');
+    if (!confirmButton) return;
+    e.preventDefault();
+    pendingForm = confirmButton.form || confirmButton;
+    var modal = document.querySelector('[data-confirm-modal]');
+    modal.querySelector('[data-confirm-message]').textContent = confirmButton.dataset.confirm;
+    modal.hidden = false;
+    modal.querySelector('[data-confirm-accept]').focus();
+  });
+  document.addEventListener('click', function (e) {
+    var modal = document.querySelector('[data-confirm-modal]');
+    if (e.target.closest('[data-confirm-cancel]')) {
+      modal.hidden = true;
+      pendingForm = null;
+    }
+    if (e.target.closest('[data-confirm-accept]') && pendingForm) {
+      modal.hidden = true;
+      pendingForm.classList.add('loading');
+      HTMLFormElement.prototype.submit.call(pendingForm);
+      pendingForm = null;
+    }
+  });
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (!form.matches('[data-loading-form]')) return;
+    form.classList.add('loading');
+    form.querySelectorAll('button[type="submit"]').forEach(function (button) {
+      button.disabled = true;
+    });
+  });
+
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape' || !r.classList.contains('admin-nav-open')) return;
     r.classList.remove('admin-nav-open');

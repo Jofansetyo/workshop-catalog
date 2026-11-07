@@ -29,7 +29,7 @@
   @endforeach
   <td class="acts">
     <a class="act" href="{{ route('admin.'.$route.'.edit', $row->id) }}">Ubah</a>
-    <form method="POST" action="{{ route('admin.'.$route.'.destroy', $row->id) }}" onsubmit="return confirm('Hapus data ini?')">@csrf @method('DELETE')<button class="act no" type="submit">Hapus</button></form>
+    <form method="POST" action="{{ route('admin.'.$route.'.destroy', $row->id) }}" data-confirm="Hapus data ini?">@csrf @method('DELETE')<button class="act no" type="submit">Hapus</button></form>
   </td>
 </tr>
 @empty<tr><td colspan="{{ count($columns) + 1 }}">Belum ada data.</td></tr>@endforelse

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\BookingStatusLog;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -22,7 +23,19 @@ class BookingController extends Controller
     public function status(Request $r, $id)
     {
         $d = $r->validate(['status' => 'required|in:' . implode(',', self::STATUS)]);
-        Booking::findOrFail($id)->update($d);
+        $booking = Booking::findOrFail($id);
+        $fromStatus = $booking->status;
+        $booking->update($d);
+
+        if ($fromStatus !== $booking->status) {
+            BookingStatusLog::create([
+                'booking_id' => $booking->id,
+                'user_id' => $r->user()->id,
+                'from_status' => $fromStatus,
+                'to_status' => $booking->status,
+            ]);
+        }
+
         return back()->with('ok', 'Status booking diperbarui.');
     }
 

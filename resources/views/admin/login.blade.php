@@ -12,16 +12,16 @@
 <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body><div class="login">
-  <form class="card" style="width:min(380px,100%)" method="POST" action="{{ route('admin.login.post') }}">
+  <form class="card login-card" method="POST" action="{{ route('admin.login.post') }}" data-loading-form>
     @csrf
-    <div class="bar"><h2 class="disp"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:36px;height:36px;object-fit:contain;border-radius:50%"> Login Admin</h2><div class="sp"></div><button class="round" type="button" data-theme-toggle>🌙</button></div>
+    <div class="bar"><h2 class="disp"><img class="logo-mark" src="{{ asset('images/logo.png') }}" alt="Logo ONG BLASTING 86"> Login Admin</h2><div class="sp"></div><button class="round" type="button" data-theme-toggle aria-label="Ganti tema">🌙</button></div>
     <p class="small">Khusus admin. Tidak ada pendaftaran publik; akun dibuat oleh pemilik.</p>
     @error('email')<div class="flash bad">{{ $message }}</div>@enderror
     <label for="email">Email</label><input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-    <div style="height:14px"></div>
+    <div class="form-spacer"></div>
     <label for="password">Password</label><input id="password" type="password" name="password" required>
-    <div style="height:14px"></div>
+    <div class="form-spacer"></div>
     <label class="chk"><input type="checkbox" name="remember" value="1"> Ingat saya</label>
-    <div style="margin-top:18px"><button class="btn" type="submit" style="width:100%">Masuk</button></div>
+    <div class="login-submit"><button class="btn" type="submit">Masuk</button></div>
   </form>
 </div></body></html>

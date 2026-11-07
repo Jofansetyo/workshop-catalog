@@ -41,6 +41,7 @@
   <form method="POST" action="{{ route('admin.logout') }}">@csrf<button class="nv" type="submit"><span class="nav-icon" aria-hidden="true">🚪</span> <span>Keluar</span></button></form>
 </aside>
 <div class="admin-scrim" data-admin-nav-close></div>
+<div class="confirm-modal" data-confirm-modal hidden role="dialog" aria-modal="true" aria-labelledby="confirm-title"><div class="confirm-box"><h2 id="confirm-title">Konfirmasi tindakan</h2><p data-confirm-message></p><div class="confirm-actions"><button class="btn g" type="button" data-confirm-cancel>Batal</button><button class="btn" type="button" data-confirm-accept>Lanjutkan</button></div></div></div>
 <main class="adm">
   <div class="top"><div class="top-title"><span class="eyebrow">CONTROL CENTER / 86</span><h1>@yield('title', 'Dashboard')</h1></div><div class="top-user"><button class="round" type="button" data-theme-toggle aria-label="Ganti tema">🌙</button><b>{{ auth()->user()->name }}</b><span class="user-dot" aria-hidden="true"></span></div></div>
   @if(session('ok'))<div class="flash" role="status">{{ session('ok') }}</div>@endif
