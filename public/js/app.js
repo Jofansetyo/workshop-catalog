@@ -1,8 +1,13 @@
 (function () {
   var r = document.documentElement;
   function countUp() {
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     document.querySelectorAll('[data-count-up]').forEach(function (el) {
       var target = Number(el.dataset.countUp || 0);
+      if (reducedMotion) {
+        el.textContent = target.toLocaleString('id-ID');
+        return;
+      }
       var start = performance.now();
       var duration = 750;
       function tick(now) {
@@ -51,4 +56,6 @@
   });
   icons();
   countUp();
+
+  window.adminAnimations = { countUp: countUp };
 })();
