@@ -30,6 +30,6 @@
     @error($n)<small class="err">{{ $message }}</small>@enderror
   </div>
   @endforeach
-  <div class="full"><button class="btn" type="submit">Simpan</button> <a class="btn g" href="{{ route('admin.'.$route.'.index') }}">Batal</a></div>
+  <div class="full" style="display:flex;align-items:center;gap:12px"><button class="btn" type="submit">Simpan</button> <a class="btn g" href="{{ route('admin.'.$route.'.index') }}">Batal</a></div>
 </form>
 @endsection
