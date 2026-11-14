@@ -26,7 +26,6 @@
 <img class="home-bg-img" src="{{ asset('images/bg-home.png') }}" alt="Bengkel" fetchpriority="high">
 <div class="wrap hero">
   <div>
-    <span class="tag">{{ $s['shop_name'] ?? 'ONG BLASTING 86' }}</span>
     <h1>{{ $s['tagline'] ?? 'Racik tenaga. Tarik gas. Menang.' }}</h1>
     <p>Spesialis tune up, upgrade performa, dan servis harian. Booking dari rumah, harga transparan.</p>
     <div class="tree" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
@@ -69,7 +68,7 @@
       <b>{{ $p->name }}</b><div class="small">{{ $p->brand }}</div>
       <div class="price">Rp {{ number_format($p->price, 0, ',', '.') }}</div>
       <span class="badge s-{{ $p->stock == 0 ? 'Habis' : ($p->stock < 5 ? 'Menipis' : 'Tersedia') }}">{{ $p->stock == 0 ? 'Habis' : ($p->stock < 5 ? 'Stok menipis' : 'Tersedia') }}</span>
-      @if($wa)<p style="margin:12px 0 0"><a href="https://wa.me/{{ $wa }}?text={{ urlencode('Halo, apakah '.$p->name.' masih ada?') }}" target="_blank" rel="noopener">Tanya stok</a></p>@endif
+      @if($wa)<p style="margin:12px 0 0"><a class="btn g" style="display:block;text-align:center;padding:6px 12px;font-size:0.9rem" href="https://wa.me/{{ $wa }}?text={{ urlencode('Halo, apakah '.$p->name.' masih ada?') }}" target="_blank" rel="noopener">Tanya Stok WA</a></p>@endif
     </div>
     @empty <p class="sub">Belum ada produk.</p> @endforelse
   </div>
