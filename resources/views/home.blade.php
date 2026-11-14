@@ -22,7 +22,7 @@
 <div class="pub-scrim" data-pub-menu-close></div>
 
 <main>
-<section><div class="wrap hero">
+<section class="home-section"><div class="wrap hero">
   <div>
     <span class="tag">{{ $s['shop_name'] ?? 'ONG BLASTING 86' }}</span>
     <h1>{{ $s['tagline'] ?? 'Racik tenaga. Tarik gas. Menang.' }}</h1>
