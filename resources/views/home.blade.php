@@ -22,7 +22,8 @@
 <div class="pub-scrim" data-pub-menu-close></div>
 
 <main>
-<section class="home-section"><div class="wrap hero">
+<section class="home-section">
+<div class="wrap hero">
   <div>
     <span class="tag">{{ $s['shop_name'] ?? 'ONG BLASTING 86' }}</span>
     <h1>{{ $s['tagline'] ?? 'Racik tenaga. Tarik gas. Menang.' }}</h1>
@@ -34,9 +35,9 @@
     </div>
   </div>
   <div class="orb" aria-hidden="true"><div style="display:grid;place-items:center;width:100%;height:100%"><img src="{{ asset('images/logo.png') }}" alt="Logo" style="width:75%;height:75%;object-fit:contain;border-radius:50%"></div></div>
-</div></section>
-
+</div>
 <div class="wrap"><div class="flag"></div></div>
+</section>
 
 <section id="layanan"><div class="wrap">
   <div class="center reveal"><h2>Layanan Kami</h2></div><p class="sub reveal">Dikerjakan mekanik berpengalaman, estimasi harga jelas di awal.</p>
