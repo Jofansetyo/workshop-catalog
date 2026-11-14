@@ -23,6 +23,7 @@
 
 <main>
 <section class="home-section">
+<img class="home-bg-img" src="{{ asset('images/bg-home.png') }}" alt="Bengkel" fetchpriority="high">
 <div class="wrap hero">
   <div>
     <span class="tag">{{ $s['shop_name'] ?? 'ONG BLASTING 86' }}</span>
