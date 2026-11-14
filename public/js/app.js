@@ -88,6 +88,63 @@
     var toggle = document.querySelector('[data-admin-nav-toggle]');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
   });
+  // Public mobile menu toggle
+  document.addEventListener('click', function (e) {
+    var pubToggle = e.target.closest('[data-pub-menu-toggle]');
+    var pubClose = e.target.closest('[data-pub-menu-close]');
+    if (pubToggle) {
+      var isOpen = r.classList.toggle('pub-nav-open');
+      pubToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      return;
+    }
+    if (pubClose) {
+      r.classList.remove('pub-nav-open');
+      var pt = document.querySelector('[data-pub-menu-toggle]');
+      if (pt) pt.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close public menu on link click
+  document.addEventListener('click', function (e) {
+    if (!r.classList.contains('pub-nav-open')) return;
+    if (e.target.closest('.links a')) {
+      r.classList.remove('pub-nav-open');
+      var pt = document.querySelector('[data-pub-menu-toggle]');
+      if (pt) pt.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { revealObs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+
+  // Back to top
+  var btt = document.querySelector('.btt');
+  if (btt) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) {
+        btt.classList.add('show');
+      } else {
+        btt.classList.remove('show');
+      }
+    }, { passive: true });
+    btt.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   icons();
   countUp();
 
